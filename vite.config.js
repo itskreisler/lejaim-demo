@@ -13,9 +13,8 @@ export default ({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          entryFileNames: 'app-[name].js',
-          assetFileNames: 'app-[name].css',
-          chunkFileNames: 'chunk-[name].js'
+          entryFileNames: 'assets/js/[name].js',
+          assetFileNames: 'assets/css/[name].css'
         }
       },
       // Prevent vendor.css being created
