@@ -2,7 +2,6 @@
   "name": "lejaim-demo",
   "private": true,
   "version": "1.0.0",
-  "homepage": "http://itskreisler.github.io/lejaim-demo",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
