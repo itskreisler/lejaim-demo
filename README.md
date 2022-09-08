@@ -1,6 +1,6 @@
-# itskreisler.github.io
+# Le Jaim
 
-Aun estoy pensando que hacer con esto...
+Esta es una demostracion
 
 
 
@@ -9,13 +9,13 @@ Aun estoy pensando que hacer con esto...
 Clone el proyecto
 
 ```bash
-  git clone https://github.com/itskreisler/itskreisler.github.io.git
+  git clone https://github.com/itskreisler/lejaim-demo.git
 ```
 
 Ir al directorio del proyecto
 
 ```bash
-  cd itskreisler.github.io
+  cd lejaim-demo
 ```
 
 Instalar dependencias
