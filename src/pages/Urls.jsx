@@ -1,12 +1,13 @@
 import React from 'react'
 import Home from '@/pages/Home.jsx'
-import Proyectos from '@/pages/Proyectos'
-import Pruebas from '@/pages/Pruebas'
+
 const pathTitle = ([path, title]) => { return { path, title } }
 const PATHS = {
   URL_DEFAULT: pathTitle(['/', 'Inicio']),
-  URL_H: pathTitle(['/proyectos', 'Proyectos']),
-  URL_P: pathTitle(['/pruebas', 'Pruebas'])
+  URL_NOTICIAS: pathTitle(['/noticias', 'Noticias']),
+  URL_SERVICIOS: pathTitle(['/servicios', 'Servicios']),
+  URL_QS: pathTitle(['/quienes-somos', 'Quiénes somos']),
+  URL_CONTACTO: pathTitle(['/contacto', 'Contacto'])
 }
 const appPages = [
   {
@@ -15,14 +16,24 @@ const appPages = [
     Component: () => <Home/>
   },
   {
-    title: PATHS.URL_H.title,
-    url: PATHS.URL_H.path,
-    Component: () => <Proyectos/>
+    title: PATHS.URL_NOTICIAS.title,
+    url: PATHS.URL_NOTICIAS.path,
+    Component: () => <></>
   },
   {
-    title: PATHS.URL_P.title,
-    url: PATHS.URL_P.path,
-    Component: () => <Pruebas/>
+    title: PATHS.URL_SERVICIOS.title,
+    url: PATHS.URL_SERVICIOS.path,
+    Component: () => <></>
+  },
+  {
+    title: PATHS.URL_QS.title,
+    url: PATHS.URL_QS.path,
+    Component: () => <></>
+  },
+  {
+    title: PATHS.URL_CONTACTO.title,
+    url: PATHS.URL_CONTACTO.path,
+    Component: () => <></>
   }
 ]
 export { appPages, PATHS }

@@ -6,11 +6,13 @@ import {
 } from 'react-router-dom'
 import Menu from './components/Menu'
 import { appPages } from './pages/urls'
-
+import './custom.scss'
+import TagFooter from './components/TagFooter'
 const App = () => {
   return (
     <Router>
       <main className="container-fluid">
+
       <Menu />
       <Routes>
         {appPages.map(({ url, Component }, index) => (
@@ -19,7 +21,7 @@ const App = () => {
         }
 
       </Routes>
-      <footer style={{ textAlign: 'center' }}>Made with ❤️ by <a href="https://github.com/itskreisler" target="_blank" rel="noreferrer">Le Jaim Team</a></footer>
+<TagFooter/>
       </main>
     </Router>
   )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import Card from 'react-bootstrap/Card'
 const Home = () => {
   const [ifSend, setIfSend] = useState(false)
   const { register, formState: { errors }, watch, handleSubmit } = useForm({ defaultValues: { email: '' } })
@@ -12,17 +13,23 @@ const Home = () => {
   }
   return (
     <>
-      <div className="grid">
-        <div>
-          <article>
-            <header>¿Quienes somos?</header>
-            <p style={{ textAlign: 'justify' }}>
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
-            </p>
-          </article>
+      <div className="container">
+        <div className='row'>
+          <div className="col-lg-6">
+          <Card border="primary">
+        <Card.Header>Inicio</Card.Header>
+        <Card.Body>
+          <Card.Title>Primary Card Title</Card.Title>
+          <Card.Text className="text-justify">
+          Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+          </div>
         </div>
         <div>
-          <div className="grid">
+          <div className="grid d-none">
             <div>
               <article>
                 <header>Redes sociales</header>
@@ -53,7 +60,7 @@ const Home = () => {
               </article>
             </div>
           </div>
-          <div className="grid">
+          <div className="grid d-none">
             <div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid">
