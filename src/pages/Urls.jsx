@@ -18,7 +18,7 @@ const appPages = [
   {
     title: PATHS.URL_NOTICIAS.title,
     url: PATHS.URL_NOTICIAS.path,
-    Component: () => <></>
+    Component: () => <>Noricias</>
   },
   {
     title: PATHS.URL_SERVICIOS.title,

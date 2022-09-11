@@ -35,7 +35,7 @@ const Menu = () => {
             src={logo}
             width="100"
             height="50"
-            className="d-inline-block align-top object-fit-cover"
+            className="d-inline-block align-top object-fit-cover rounded"
             alt="React Bootstrap logo"
           />
         </Navbar.Brand>
