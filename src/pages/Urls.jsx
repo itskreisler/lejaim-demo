@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from '@/pages/Home.jsx'
+import Noticias from '@/pages/Noticias.jsx'
 
 const pathTitle = ([path, title]) => { return { path, title } }
 const PATHS = {
@@ -18,7 +19,7 @@ const appPages = [
   {
     title: PATHS.URL_NOTICIAS.title,
     url: PATHS.URL_NOTICIAS.path,
-    Component: () => <>Noricias</>
+    Component: () => <Noticias/>
   },
   {
     title: PATHS.URL_SERVICIOS.title,

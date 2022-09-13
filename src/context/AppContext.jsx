@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */ // TODO: Actualizar a las últimas herramientas de Eslint
+import PropTypes from 'prop-types'
 import React, { useContext, createContext } from 'react'
 
 const AppContext = createContext({
@@ -15,5 +15,8 @@ export const TagAppContext = ({ children }) => {
       {children}
     </AppContext.Provider>
   )
+}
+TagAppContext.propTypes = {
+  children: PropTypes.element.isRequired
 }
 export const useAppContext = () => useContext(AppContext)

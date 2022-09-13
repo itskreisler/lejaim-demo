@@ -1,87 +1,92 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useRef, useState } from 'react'
+import Alert from 'react-bootstrap/Alert'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
+import { Col, Container, Row } from 'react-bootstrap'
+import { useHookForm } from '../hooks/use-hook-form'
+import Carousel from 'react-bootstrap/Carousel'
 const Home = () => {
   const [ifSend, setIfSend] = useState(false)
-  const { register, formState: { errors }, watch, handleSubmit } = useForm({ defaultValues: { email: '' } })
+  const { register, handleSubmit } = useHookForm()
+  const form = useRef()
   const onSubmit = (data) => {
-    console.log(data)
     setIfSend(true)
     setTimeout(() => {
       setIfSend(false)
+      form.current.reset()
     }, 2000)
   }
   return (
-    <>
-      <div className="container">
-        <div className='row'>
-          <div className="col-lg-6">
-          <Card border="primary">
-        <Card.Header>Inicio</Card.Header>
-        <Card.Body>
-          <Card.Title>Primary Card Title</Card.Title>
-          <Card.Text className="text-justify">
-          Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-          </div>
-        </div>
-        <div>
-          <div className="grid d-none">
-            <div>
-              <article>
-                <header>Redes sociales</header>
-                <ul>
-                  {[
-                    {
-                      title: 'Twitter',
-                      url: 'https://www.twitter.com/itskreisler'
-                    },
-                    { title: 'TikTok', url: 'https://www.tiktok.com/@itskreisler' }
-                  ].map(({ url, title }, index) => (
-                    <li
-                      style={{ textAlign: 'center', listStyle: 'none' }}
-                      key={index}
-                    >
-                      <a
-                        href={url}
-                        target="_blank"
-                        title={title}
-                        rel="noreferrer"
-                        data-tooltip={url}
-                      >
-                        {title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </div>
-          </div>
-          <div className="grid d-none">
-            <div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="grid">
-                  <div>
-                    <label htmlFor="email">Se uno de los primeros en enterarte!</label>
-                    <input type='email' {...register('email')} placeholder='Correo electrónico' autoComplete='off' required />
-                  </div>
-                  <div style={{ marginTop: 'auto' }}>
-                    <button className='success' type="submit">Suscribirme</button>
-                  </div>
-                </div>
-                <div className="grid">
-  <div>{ifSend && (<span>Gracias por suscribirte</span>)}</div>
-</div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </>
+    <Container>
+      <Row className="mb-3">
+        <Col lg={6} className="mx-auto">
+          <Card border="info">
+            <Card.Body>
+              <Carousel>
+                {[
+                  './img/1.jpg',
+                  './img/2.jpg',
+                  './img/3.jpg'
+                ].map((el, index) => (
+                  <Carousel.Item key={index} interval={2000}>
+                    <img
+                      className="d-block w-100 rounded object-fit-cover"
+                      height={200}
+                      src={el}
+                      alt="..."
+                    />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={6} className="mb-3 mb-lg-0">
+          <Card border="primary" className="h-100">
+            <Card.Header>Inicio</Card.Header>
+            <Card.Body>
+              <Card.Title>Historia</Card.Title>
+              <Card.Text className="text-justify">
+                Comenzo como una idea, y poco a poco se fue formando, nuestra
+                intencion es brindar acceso oportuno a los servicios de salud, y
+                reducir los tiempos de espera.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card border="primary" className="h-100">
+            <Card.Header>Suscribete a nuestro voletin de noticias.</Card.Header>
+            <Card.Body>
+              <Card.Title>Se uno de los primeros en enterarte!</Card.Title>
+              <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
+                <InputGroup className="mb-3">
+                  <Form.Control
+                    type="email"
+                    placeholder="Correo electronico"
+                    aria-label="Correo electronico"
+                    aria-describedby="basic-addon2"
+                    {...register('email')}
+                    autoComplete="off"
+                    required
+                  />
+                  <Button variant="success" type="submit">
+                    Suscribirme
+                  </Button>
+                </InputGroup>
+                <Alert show={ifSend} variant={'info'}>
+                  !Gracias por suscribirte!
+                </Alert>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

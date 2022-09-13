@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar'
 const Menu = () => {
   const { pathname } = useLocation()
   const [activeMenu] = useState(true)
-  const logo = `${import.meta.env.VITE_BASE_URL}img/logo.jpeg`
+  const logo = './img/logo.jpeg'
   const navigateTo = useNavigate()
   const temp = appPages.find(({ url, title }) => url === pathname && { title })
   useEffect(() => {
@@ -36,7 +36,7 @@ const Menu = () => {
             width="100"
             height="50"
             className="d-inline-block align-top object-fit-cover rounded"
-            alt="React Bootstrap logo"
+            alt="Logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

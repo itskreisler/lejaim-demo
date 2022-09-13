@@ -56,3 +56,11 @@ img {
 .text-justify {
   text-align: justify !important;
 }
+
+$cursores: 'pointer', 'not-allowed';
+
+@each $cursor in $cursores {
+  .cursor-#{$cursor} {
+    cursor: $cursor;
+  }
+}
