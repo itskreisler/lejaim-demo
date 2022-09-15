@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Col, Container, Row } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
@@ -6,31 +6,24 @@ import { useHolder } from '../hooks/use-holder'
 
 const Noticias = () => {
   const CardNoticias = ({ number, ...props }) => {
-    const [status, text] = useHolder({
-      dimensions: '350x200',
+    const [text, img] = useHolder({
+      dimensions: '300x200',
       random: 'yes',
-      text: 'Le Jaim',
-      size: 50
+      text: 'LE JAIM',
+      outline: 'yes',
+      size: 30
     })
-    const myImage = useRef()
-    useEffect(() => {
-      status === 'ready' &&
-        (() => {
-          !(typeof Holder === 'undefined') &&
-          // TODO: Holder no funciona con npm
-            // eslint-disable-next-line no-undef
-            Holder.run({
-              images: myImage.current
-            })
-        })()
-    }, [status])
 
     return (
       <Col lg={6} className="mb-3 mx-auto">
         <Card>
           <Row>
             <Col lg={6}>
-              <Card.Img ref={myImage} src={text} />
+              <Row>
+                <Col xs={'auto'} className='mx-auto pt-3 pt-lg-0'>
+                <Card.Img className='img-fluid' style={{ width: '100%' }} ref={img} src={text} />
+                </Col>
+              </Row>
             </Col>
             <Col lg={6}>
               <Card.Body>

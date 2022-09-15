@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { useScript } from '../hooks/use-script'
 
 /**
@@ -15,14 +16,26 @@ import { useScript } from '../hooks/use-script'
  * @param {String} lineWrap - Relación de longitud de línea máxima a ancho de imagen. Example: holder.js/300x200?lineWrap=0.5
  * @returns
  */
-const useHolder = (options = { dimensions: '300x200' }) => {
-  const { dimensions } = options
-  const keys = Object.keys(options)
-  const values = Object.values(options)
+const useHolder = ({ dimensions, ...props }) => {
+  // const { dimensions } = options
+  const keys = Object.keys(props)
+  const values = Object.values(props)
   const query = keys.map((key, index) => `${key}=${values[index]}`).join('&')
   const status = useScript('./holder.min.js')
   const placeholder = `holder.js/${dimensions}?${query}`
-  return [status, placeholder]
+  const myImage = useRef()
+  useEffect(() => {
+    status === 'ready' &&
+        (() => {
+          !(typeof Holder === 'undefined') &&
+            // TODO: Holder no funciona con npm
+            // eslint-disable-next-line no-undef
+            myImage.current && Holder.run({
+            images: myImage.current
+          })
+        })()
+  }, [status])
+  return [placeholder, myImage, status]
 }
 
 export { useHolder }

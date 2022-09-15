@@ -1,6 +1,9 @@
 import React from 'react'
 import Home from '@/pages/Home.jsx'
 import Noticias from '@/pages/Noticias.jsx'
+import Servicios from '@/pages/Servicios.jsx'
+import QuienesSomos from '@/pages/QuienesSomos.jsx'
+import Contacto from '@/pages/Contacto.jsx'
 
 const pathTitle = ([path, title]) => { return { path, title } }
 const PATHS = {
@@ -24,17 +27,17 @@ const appPages = [
   {
     title: PATHS.URL_SERVICIOS.title,
     url: PATHS.URL_SERVICIOS.path,
-    Component: () => <></>
+    Component: () => <Servicios/>
   },
   {
     title: PATHS.URL_QS.title,
     url: PATHS.URL_QS.path,
-    Component: () => <></>
+    Component: () => <QuienesSomos/>
   },
   {
     title: PATHS.URL_CONTACTO.title,
     url: PATHS.URL_CONTACTO.path,
-    Component: () => <></>
+    Component: () => <Contacto/>
   }
 ]
 export { appPages, PATHS }

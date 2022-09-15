@@ -42,7 +42,8 @@ $theme-colors: (
   "dark":       $dark
 );
 $custom-colors: (
-  "csslejaim": #900,
+  "csslejaim": #1976d2,
+  "csslejaim-secondary": #039be5
 );
 $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

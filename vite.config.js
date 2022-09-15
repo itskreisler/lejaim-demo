@@ -6,7 +6,7 @@ import path from 'path'
 export default ({ mode }) => {
   // Load app-level env vars to node-level env vars.
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
-  const base = process.env.npm_config_mode === 'dev' ? '/lejaim-demo/' : './'
+  const base = typeof process.env.npm_config_mode === 'undefined' ? '/lejaim-demo/' : './'
   return defineConfig({
     plugins: [react()],
     base,

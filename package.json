@@ -30,8 +30,6 @@
     "standard": "^17.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "har-validator": "^5.1.5",
     "request": "^2.88.2",
