@@ -1,3 +1,7 @@
+
+const useRandomHex = (alt = true) => {
+  return alt ? Math.random().toString(16).slice(-6) : Math.floor(Math.random() * 16777215).toString(16)
+}
 const useRandomInt = (max, min, both = false) =>
   Math.floor(Math.random() * (max - min + (both ? 1 : 0))) + min
 const useRandomItem = (props) => {
@@ -20,4 +24,4 @@ const useRandomItem = (props) => {
   return item
 }
 
-export { useRandomItem }
+export { useRandomItem, useRandomHex }

@@ -5,19 +5,22 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Container, Col, Row } from 'react-bootstrap'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import { useTitle } from 'react-use'
 const Menu = () => {
   const { pathname } = useLocation()
+
   const [activeMenu] = useState(true)
   const logo = './img/logo.jpeg'
   const navigateTo = useNavigate()
-  const temp = appPages.find(({ url, title }) => url === pathname && { title })
+  const temp = appPages.find(({ url, title }) => (url === pathname) && { title })
+  useTitle(`Le jaim | ${temp?.title}`)
   useEffect(() => {
-    !temp && navigateTo('/')
-    document.title = `Le jaim | ${temp?.title}`
+    console.log(temp?.url, pathname, appPages.find(({ url, title }) => (url.includes(':') && pathname.includes(url.split(':')[0])) && { title }))
+    //! temp && navigateTo('/')
   }, [temp])
   const TagListMenu = () => {
     return appPages.map(({ url, title }, index) => {
-      return (
+      return !url.includes(':') && (
         <Nav.Link active={pathname === url}
           key={index}
           href={'#' + url}

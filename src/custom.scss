@@ -54,8 +54,19 @@ img {
     object-fit: cover;
   }
 }
+.clip-path-circle {
+  clip-path: circle(50% at 50% 50%);
+}
 .text-justify {
   text-align: justify !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 $cursores: 'pointer', 'not-allowed';
