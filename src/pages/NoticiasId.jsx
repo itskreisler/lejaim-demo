@@ -1,10 +1,15 @@
 import React from 'react'
+import { Container, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 const NoticiasId = () => {
   const { noticiaId } = useParams()
 
   return (
-    <div>NoticiasId</div>
+    <Container>
+      <Row>
+    {noticiaId}
+      </Row>
+    </Container>
   )
 }
 

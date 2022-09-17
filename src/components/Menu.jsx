@@ -6,33 +6,33 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Container, Col, Row } from 'react-bootstrap'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { useTitle } from 'react-use'
+import { useCurrentPath } from '../hooks/use-current-path'
 const Menu = () => {
-  const { pathname } = useLocation()
-
-  const [activeMenu] = useState(true)
+  const location = useLocation()
+  const { pathname } = location
   const logo = './img/logo.jpeg'
   const navigateTo = useNavigate()
-  const temp = appPages.find(({ url, title }) => (url === pathname) && { title })
+  const temp = appPages.find(
+    ({ url, title }) => useCurrentPath(url, location) && { title }
+  )
   useTitle(`Le jaim | ${temp?.title}`)
   useEffect(() => {
-    console.log(temp?.url, pathname, appPages.find(({ url, title }) => (url.includes(':') && pathname.includes(url.split(':')[0])) && { title }))
-    //! temp && navigateTo('/')
+    !temp && navigateTo('/')
   }, [temp])
   const TagListMenu = () => {
     return appPages.map(({ url, title }, index) => {
-      return !url.includes(':') && (
-        <Nav.Link active={pathname === url}
-          key={index}
-          href={'#' + url}
-        >
-          <span className='h5'>{title}</span>
-        </Nav.Link>
+      return (
+        !url.includes(':') && (
+          <Nav.Link active={pathname === url} key={index} href={'#' + url}>
+            <span className="h5">{title}</span>
+          </Nav.Link>
+        )
       )
     })
   }
   return (
     <>
-      <Navbar bg="" expand="lg" collapseOnSelect={activeMenu}>
+      <Navbar bg="" expand="lg" collapseOnSelect={true}>
         <Container>
           <Navbar.Brand href="#/">
             <img
@@ -51,15 +51,13 @@ const Menu = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container className='d-lg-none'>
+      <Container className="d-lg-none">
         <Row>
           <Col>
             <hr />
             <Breadcrumb>
               <Breadcrumb.Item href="#/">Le Jaim</Breadcrumb.Item>
-              <Breadcrumb.Item active>
-                {temp?.title}
-              </Breadcrumb.Item>
+              <Breadcrumb.Item active>{temp?.title}</Breadcrumb.Item>
             </Breadcrumb>
             <hr />
           </Col>

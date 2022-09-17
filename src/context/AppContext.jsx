@@ -17,6 +17,6 @@ export const TagAppContext = ({ children }) => {
   )
 }
 TagAppContext.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes
 }
 export const useAppContext = () => useContext(AppContext)
